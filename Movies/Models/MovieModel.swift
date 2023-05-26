@@ -13,10 +13,5 @@ struct SearchResults: Codable {
 
 struct MovieModel: Codable {
     let id: Int
-    var title: String
-    
-    init(id: Int, title: String) {
-        self.id = id
-        self.title = title
-    }
+    let title: String
 }
