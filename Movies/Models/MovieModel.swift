@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct SearchResults: Codable {
+    let results: [MovieModel]
+}
+
 struct MovieModel: Codable {
     let id: Int
     var title: String
