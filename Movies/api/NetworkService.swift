@@ -9,25 +9,38 @@ import Foundation
 
 
 class MovieNetworkService {
-    let baseUrl: String = "https://api.themoviedb.org"
+    let baseUrl = "https://api.themoviedb.org"
+    let searchUrl = "/3/search/movie"
+    let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String
     
     let headers = [
       "accept": "application/json"
     ]
-
     
-    func searchMovies(completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void) {
-        guard let url = URL(string: baseUrl + "3/search/movie?api_key=eb5d9998400f4c57683e468514e7019c") else {
-            return
-        }
-        let request = NSMutableURLRequest(url: NSURL(string: baseUrl + "3/movie/now_playing?language=en-US&page=1?api_key=eb5d9998400f4c57683e468514e7019c")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
+    func searchMovies(query: String, page: Int) async -> [MovieModel] {
+        var urlComponents = URLComponents(string: baseUrl)
+        urlComponents?.path = searchUrl
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "query", value: query),
+            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "language", value: "en-US"),
+            URLQueryItem(name: "include_adult", value: "false")
+        ]
         
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: completionHandler)
-        dataTask.resume()
+        guard let url = urlComponents?.url else {
+            return []
+        }
+        
+        let movies: [MovieModel]
+        do {
+            let result: (data: Data, response: URLResponse) = try await URLSession.shared.data(from: url)
+            let decoded = try JSONDecoder().decode(SearchResults.self, from: result.data)
+            movies = decoded.results
+        } catch {
+            print(error)
+            movies = []
+        }
+        return movies
     }
 }
