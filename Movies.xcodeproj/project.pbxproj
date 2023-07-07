@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF1F3B452A58819800BC50F0 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F3B442A58819800BC50F0 /* MovieTableViewCell.swift */; };
+		CF1F3B472A5884C100BC50F0 /* MovieTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1F3B462A5884C100BC50F0 /* MovieTableViewDataSource.swift */; };
 		CFAA65A029FC5ABF00EBB869 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA659F29FC5ABF00EBB869 /* AppDelegate.swift */; };
 		CFAA65A229FC5ABF00EBB869 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA65A129FC5ABF00EBB869 /* SceneDelegate.swift */; };
 		CFAA65A429FC5ABF00EBB869 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA65A329FC5ABF00EBB869 /* ViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF1F3B442A58819800BC50F0 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		CF1F3B462A5884C100BC50F0 /* MovieTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewDataSource.swift; sourceTree = "<group>"; };
 		CFAA659C29FC5ABF00EBB869 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAA659F29FC5ABF00EBB869 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFAA65A129FC5ABF00EBB869 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				CFAA65AA29FC5AC100EBB869 /* LaunchScreen.storyboard */,
 				CFAA65AD29FC5AC100EBB869 /* Info.plist */,
 				CFC568CE2A213B10000FA85C /* keys.xcconfig */,
+				CF1F3B442A58819800BC50F0 /* MovieTableViewCell.swift */,
+				CF1F3B462A5884C100BC50F0 /* MovieTableViewDataSource.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -165,7 +171,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC568CD2A2127F2000FA85C /* NetworkService.swift in Sources */,
+				CF1F3B472A5884C100BC50F0 /* MovieTableViewDataSource.swift in Sources */,
 				CFAA65B92A0EDD1900EBB869 /* MovieModel.swift in Sources */,
+				CF1F3B452A58819800BC50F0 /* MovieTableViewCell.swift in Sources */,
 				CFAA65A429FC5ABF00EBB869 /* ViewController.swift in Sources */,
 				CFAA65A029FC5ABF00EBB869 /* AppDelegate.swift in Sources */,
 				CFAA65A229FC5ABF00EBB869 /* SceneDelegate.swift in Sources */,

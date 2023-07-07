@@ -11,7 +11,7 @@ struct SearchResults: Codable {
     let results: [MovieModel]
 }
 
-struct MovieModel: Codable {
+struct MovieModel: Codable, Hashable {
     let id: Int
     let title: String
 }
