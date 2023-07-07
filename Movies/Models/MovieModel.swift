@@ -14,4 +14,11 @@ struct SearchResults: Codable {
 struct MovieModel: Codable, Hashable {
     let id: Int
     let title: String
+    let posterPath: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case posterPath = "poster_path"
+    }
 }
