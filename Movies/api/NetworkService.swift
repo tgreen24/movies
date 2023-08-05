@@ -43,4 +43,28 @@ class MovieNetworkService {
         }
         return movies
     }
+    
+    func getMovieDetails(movieId: Int) async -> MovieDetailModel? {
+        var urlComponents = URLComponents(string: baseUrl)
+        urlComponents?.path = "/3/movie/\(movieId)"
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: "en-US")
+        ]
+        
+        guard let url = urlComponents?.url else {
+            return nil
+        }
+        
+        let movie: MovieDetailModel?
+        do {
+            let result: (data: Data, response: URLResponse) = try await URLSession.shared.data(from: url)
+            let decoded = try JSONDecoder().decode(MovieDetailModel.self, from: result.data)
+            movie = decoded
+        } catch {
+            print(error)
+            movie = nil
+        }
+        return movie
+    }
 }

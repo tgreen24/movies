@@ -11,6 +11,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     private var tableView = UITableView()
     private var dataSource: MovieTableViewDataSource?
+    private var movies: [MovieModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         tableView.delegate = self
         
         Task {
-            let movies = await service.searchMovies(query: "marvel", page: 1)
+            movies = await service.searchMovies(query: "marvel", page: 1)
             print(movies)
             dataSource?.loadWithItems(movies)
         }
@@ -37,6 +38,8 @@ class ViewController: UIViewController, UITableViewDelegate {
         ])
     }
 
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(MovieDetailViewController(movie: movies[indexPath.row]), animated: true)
+    }
 }
 
